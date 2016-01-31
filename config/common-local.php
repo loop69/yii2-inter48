@@ -2,10 +2,10 @@
 return [
     'components' => [
         'db' => [
-            'dsn' => 'mysql:host=localhost;dbname=seokeys',
+            'dsn' => 'mysql:host=localhost;dbname=test',
             'username' => 'root',
-            'password' => '',
-            'tablePrefix' => 'keys_',
+            'password' => '1969',
+           // 'tablePrefix' => 'keys_',
         ],
         'mailer' => [
             'useFileTransport' => true,

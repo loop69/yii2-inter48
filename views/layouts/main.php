@@ -8,6 +8,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\components\widgets;
 
 AppAsset::register($this);
 ?>
@@ -35,18 +36,18 @@ AppAsset::register($this);
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+        'items' => array_filter([
+            ['label' => 'Home', 'url' => ['/main/default/index']],
+            ['label' => 'Contact', 'url' => ['/contact/default/index']],
             Yii::$app->user->isGuest ?
-                ['label' => 'Login', 'url' => ['/site/login']] :
-                [
-                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-                    'url' => ['/site/logout'],
-                    'linkOptions' => ['data-method' => 'post']
-                ],
-        ],
+                ['label' => 'Sign Up', 'url' => ['/user/default/signup']] :
+                false,
+            Yii::$app->user->isGuest ?
+                ['label' => 'Login', 'url' => ['/user/default/login']] :
+                ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                    'url' => ['/user/default/logout'],
+                    'linkOptions' => ['data-method' => 'post']],
+        ]),
     ]);
     NavBar::end();
     ?>
@@ -55,6 +56,7 @@ AppAsset::register($this);
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
+        <?= @app\components\widgets\Alert::widget() ?>
         <?= $content ?>
     </div>
 </div>
