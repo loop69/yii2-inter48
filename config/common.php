@@ -7,6 +7,8 @@ $params = ArrayHelper::merge(
 );
  
 return [
+    'name' => 'Кроличья нора',
+    'language' => 'ru',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'modules' => [
@@ -39,6 +41,14 @@ return [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
+        ],
+        'i18n' => [
+            'translations' => [
+                'app' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'forceTranslation' => true,
+                ],
+            ],
         ],
         'cache' => [
             'class' => 'yii\caching\DummyCache',
