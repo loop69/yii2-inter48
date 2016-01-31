@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php $form = ActiveForm::begin(['id' => 'password-reset-request-form']); ?>
             <?= $form->field($model, 'email') ?>
             <div class="form-group">
-              
+
             </div>
             <?php ActiveForm::end(); ?>
         </div>
