@@ -58,7 +58,7 @@ class DefaultController extends Controller
     {
         return $this->redirect(['profile/index'], 301);
     }
-    
+
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {

@@ -7,6 +7,21 @@ return [
     'NAV_PROFILE' => 'Профиль',
     'NAV_LOGOUT' => 'Выход',
 
+    'TITLE_CONTACT' => 'Форма обратной связи',
+    'TITLE_PROFILE' => 'Профиль пользователя',
+
+    'TEXT_SIGNUP'=> 'Заполните поля формы для регистрации:',
+
+    'TITLE_PASSWORD_CHANGE' => 'Страница смены пароля',
+    'LINK_PASSWORD_CHANGE' => 'Сменить пароль',
+    'USER_CURRENT_PASSWORD' => 'Текущий пароль',
+    'USER_NEW_PASSWORD' => 'Новый пароль',
+    'USER_REPEAT_PASSWORD' => 'Повторить новый пароль',
+    'TITLE_UPDATE' => 'Редактировать профиль',
+
+    'ADMIN_USERS' => 'Администрирование пользователей',
+
+
     'BUTTON_SEND' => 'Отправить',
     'BUTTON_SAVE' => 'Сохранить',
     'BUTTON_UPDATE' => 'Редактировать',
