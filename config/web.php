@@ -1,14 +1,8 @@
 <?php
-use yii\helpers\ArrayHelper;
-
-$params = ArrayHelper::merge(
-    require(__DIR__ . '/params.php'),
-    require(__DIR__ . '/params-local.php')
-);
 
 $config = [
-    'id' => 'app',
-    'defaultRoute' => 'main/default/index',
+    'id' => 'rabbit-burrow',
+    'language' => 'ru-RU',
     'components' => [
         'user' => [
             'identityClass' => 'app\modules\user\models\User',
@@ -26,14 +20,14 @@ $config = [
         ],
     ],
 ];
- 
+
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = 'yii\debug\Module';
- 
+
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = 'yii\gii\Module';
 }
- 
+
 return $config;

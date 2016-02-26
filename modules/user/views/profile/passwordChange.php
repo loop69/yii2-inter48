@@ -1,12 +1,14 @@
 <?php
+
 use yii\bootstrap\ActiveForm;
+use app\modules\user\Module;
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\user\models\PasswordChangeForm */
+/* @var $model \app\modules\user\models\form\PasswordChangeForm */
 
-$this->title = Yii::t('app', 'TITLE_PASSWORD_CHANGE');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'TITLE_PROFILE'), 'url' => ['index']];
+$this->title = Module::t('module', 'TITLE_PASSWORD_CHANGE');
+$this->params['breadcrumbs'][] = ['label' => Module::t('module', 'TITLE_PROFILE'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-profile-password-change">
@@ -22,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $form->field($model, 'newPasswordRepeat')->passwordInput(['maxlength' => true]) ?>
 
         <div class="form-group">
-            <?= Html::submitButton(Yii::t('app', 'BUTTON_SAVE'), ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton(Module::t('module', 'BUTTON_SAVE'), ['class' => 'btn btn-primary', 'name' => 'change-button']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>

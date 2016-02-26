@@ -1,7 +1,9 @@
 <?php
+
 namespace app\modules\admin\models;
 
 use yii\helpers\ArrayHelper;
+use app\modules\user\Module;
 use Yii;
 
 class User extends \app\modules\user\models\User
@@ -12,6 +14,9 @@ class User extends \app\modules\user\models\User
     public $newPassword;
     public $newPasswordRepeat;
 
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return ArrayHelper::merge(parent::rules(), [
@@ -29,14 +34,20 @@ class User extends \app\modules\user\models\User
         return $scenarios;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function attributeLabels()
     {
         return ArrayHelper::merge(parent::attributeLabels(), [
-            'newPassword' => Yii::t('app', 'USER_NEW_PASSWORD'),
-            'newPasswordRepeat' => Yii::t('app', 'USER_REPEAT_PASSWORD'),
+            'newPassword' => Module::t('module', 'USER_NEW_PASSWORD'),
+            'newPasswordRepeat' => Module::t('module', 'USER_REPEAT_PASSWORD'),
         ]);
     }
 
+    /**
+     * @inheritdoc
+     */
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
@@ -47,4 +58,4 @@ class User extends \app\modules\user\models\User
         }
         return false;
     }
-}
+} 
