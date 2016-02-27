@@ -40,6 +40,7 @@ AppAsset::register($this);
         'activateParents' => true,
         'items' => array_filter([
             ['label' => Yii::t('app', 'NAV_HOME'), 'url' => ['/main/default/index']],
+            ['label' => Yii::t('app', 'NAV_BLOG'), 'url' => ['/blog/post/index']],
             ['label' => Yii::t('app', 'NAW_CONTACT'), 'url' => ['/main/contact/index']],
             Yii::$app->user->isGuest ?
                 ['label' => Yii::t('app', 'NAV_SIGNUP'), 'url' => ['/user/default/signup']] :

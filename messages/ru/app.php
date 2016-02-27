@@ -6,6 +6,7 @@ return [
     'NAV_LOGIN' => 'Вход',
     'NAV_PROFILE' => 'Профиль',
     'NAV_LOGOUT' => 'Выход',
+    'NAV_BLOG' => 'Блог',
 
 
     'TITLE_CONTACT' => 'Связь',

@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
+use dosamigos\ckeditor\CKEditor;
+use iutbay\yii2kcfinder\KCFinderInputWidget;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\blog\models\Post */
@@ -17,7 +19,10 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'content')->widget(CKEditor::className(), [
+        'options' => ['rows' => 6],
+        'preset' => 'standart'
+    ]) ?>
 
     <?= $form->field($model, 'category_id')->dropDownList(
         ArrayHelper::map($category, 'id', 'name')
