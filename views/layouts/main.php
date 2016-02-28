@@ -40,7 +40,7 @@ AppAsset::register($this);
         'activateParents' => true,
         'items' => array_filter([
             ['label' => Yii::t('app', 'NAV_HOME'), 'url' => ['/main/default/index']],
-            ['label' => Yii::t('app', 'NAV_BLOG'), 'url' => ['/blog/post/index']],
+            ['label' => Yii::t('app', 'NAV_BLOG'), 'url' => ['/blog/view/index']],
             ['label' => Yii::t('app', 'NAW_CONTACT'), 'url' => ['/main/contact/index']],
             Yii::$app->user->isGuest ?
                 ['label' => Yii::t('app', 'NAV_SIGNUP'), 'url' => ['/user/default/signup']] :
@@ -52,6 +52,7 @@ AppAsset::register($this);
                 ['label' => Yii::t('app', 'NAV_ADMIN'), 'items' => [
                     ['label' => Yii::t('app', 'NAV_ADMIN'), 'url' => ['/admin/default/index']],
                     ['label' => Yii::t('app', 'ADMIN_USERS'), 'url' => ['/admin/users/index']],
+                    ['label' => Yii::t('app', 'NAV_BLOG'), 'url' => ['/blog/post/index']],
                 ]] :
                 false,
             !Yii::$app->user->isGuest ?
