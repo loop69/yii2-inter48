@@ -39,30 +39,47 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'activateParents' => true,
         'items' => array_filter([
+
             ['label' => Yii::t('app', 'NAV_HOME'), 'url' => ['/main/default/index']],
-            ['label' => Yii::t('app', 'NAV_BLOG'), 'url' => ['/blog/view/index']],
+
+            Yii::$app->user->isGuest ?
+            ['label' => Yii::t('app', 'NAV_BLOG'), 'url' => ['/blog/view/index']]:
+                false,
+
+            !Yii::$app->user->isGuest ?
+                ['label' => Yii::t('app', 'NAV_BLOG'), 'items' => [
+                    ['label' => Yii::t('app', 'NAV_BLOG'), 'url' => ['/blog/view/index']],
+                    ['label' => Yii::t('app', 'NAV_CREATE'), 'url' => ['/blog/post/create']],
+                ]] :
+                false,
+
             ['label' => Yii::t('app', 'NAW_CONTACT'), 'url' => ['/main/contact/index']],
+
             Yii::$app->user->isGuest ?
                 ['label' => Yii::t('app', 'NAV_SIGNUP'), 'url' => ['/user/default/signup']] :
                 false,
+
             Yii::$app->user->isGuest ?
                 ['label' => Yii::t('app', 'NAV_LOGIN'), 'url' => ['/user/default/login']] :
                 false,
-            !Yii::$app->user->isGuest ?
+
+            Yii::$app->user->can('admin') ?
                 ['label' => Yii::t('app', 'NAV_ADMIN'), 'items' => [
                     ['label' => Yii::t('app', 'NAV_ADMIN'), 'url' => ['/admin/default/index']],
                     ['label' => Yii::t('app', 'ADMIN_USERS'), 'url' => ['/admin/users/index']],
                     ['label' => Yii::t('app', 'NAV_BLOG'), 'url' => ['/blog/post/index']],
                 ]] :
                 false,
+
             !Yii::$app->user->isGuest ?
                 ['label' => Yii::t('app', 'NAV_PROFILE'), 'items' => [
-                    ['label' => Yii::t('app', 'NAV_PROFILE'), 'url' => ['/user/profile/index']],
+                    ['label' => Yii::$app->user->id/*Yii::t('app', 'NAV_PROFILE')*/, 'url' => ['/user/profile/index']],
                     ['label' => Yii::t('app', 'NAV_LOGOUT'),
                         'url' => ['/user/default/logout'],
                         'linkOptions' => ['data-method' => 'post']]
                 ]] :
                 false,
+           //['label' => Yii::$app->user->id],
         ]),
     ]);
     NavBar::end();
@@ -80,7 +97,7 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="container">
 
-        <p class="pull-left">&copy; <?= Html::encode($this->title) ?> <?= date('Y') ?></p>
+        <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
 
      <!--   <p class="pull-right"><?= Yii::powered() ?></p>   -->
     </div>

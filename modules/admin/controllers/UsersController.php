@@ -7,6 +7,7 @@ use app\modules\admin\models\User;
 use app\modules\admin\models\search\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 
 /**
@@ -17,6 +18,20 @@ class UsersController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions'=>['login','error'],
+                        'roles' => ['?'],
+                    ],
+//                    [
+//                        'allow' => true,
+//                        'roles' => ['admin'],
+//                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -32,6 +47,7 @@ class UsersController extends Controller
      */
     public function actionIndex()
     {
+        if (\Yii::$app->user->can('deletePost')) {
         $searchModel = new UserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -39,6 +55,7 @@ class UsersController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }else{echo 'not admin';}
     }
 
     /**

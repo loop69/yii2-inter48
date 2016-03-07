@@ -9,7 +9,9 @@ use app\modules\blog\models\Category;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
+use app\modules\blog\Module;
 
 /**
  * PostController implements the CRUD actions for Post model.
@@ -19,6 +21,7 @@ class PostController extends Controller
     public function behaviors()
     {
         return [
+
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -34,14 +37,20 @@ class PostController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new PostSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+      //  if (Yii::$app->user->can('admin')) {
+            $searchModel = new PostSearch();
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        }
+      //  else
+     //   {
+     //       echo 'запрет';
+      //  }
+   // }
 
     /**
      * Displays a single Post model.
@@ -82,16 +91,20 @@ class PostController extends Controller
      */
     public function actionUpdate($id)
     {
+           // $post = $this->findModel($id);
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-                'category' => Category::find()->all()
-            ]);
-        }
+          if (Yii::$app->user->can('updatePost', ['post' => $model])) {
+
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                return $this->render('update', [
+                    'model' => $model,
+                    'category' => Category::find()->all()
+                ]);
+            }
+       }else{echo 'ddd';}
     }
 
     /**
@@ -102,9 +115,17 @@ class PostController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
 
-        return $this->redirect(['index']);
+        if (Yii::$app->user->can('updatePost', ['post' => $model])) {
+
+            $model->delete();
+
+            return $this->redirect(['index']);
+        }
+        else{
+            echo 'deny';
+        }
     }
 
     /**

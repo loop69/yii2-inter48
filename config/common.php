@@ -55,10 +55,10 @@ return [
         ],
         'authManager' => [
             'class' => 'yii\rbac\PhpManager',
-            'defaultRoles' => ['user', 'admin'],
-            'itemFile' => '@app/rbac/data/items.php',
-            'assignmentFile' => '@app/rbac/data/assignments.php',
-            'ruleFile' => '@app/rbac/data/rules.php'
+      //      'defaultRoles' => ['admin', 'author'],
+//            'itemFile' => '@app/rbac/items.php',
+//            'ruleFile' => '@app/rbac/rules.php',
+//            'assignmentFile' => '@app/rbac/assignments.php',
         ],
         'i18n' => [
             'translations' => [

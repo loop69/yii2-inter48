@@ -15,7 +15,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
+    <div class="body-content">
 
+        <div class="row">
+            <div class="col-lg-6">
 
     <?php foreach($model as $data):?>
         <div><h2>
@@ -27,5 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <br />
     <?php endforeach;?>
 
-
+                </div>
+            </div>
+        </div>
 </div>

@@ -1,6 +1,28 @@
-<?=$model->title?>
-</h2></div>
+<?php
+//use yii\helpers\Url;
+use yii\helpers\Html;
+
+$this->title = Yii::t('app', 'Post');
+$this->params['breadcrumbs'][] = ['label' => 'блог', 'url' => ['/blog/view']];
+$this->params['breadcrumbs'][] = $model->title;
+?>
+<div class="body-content">
+
+    <div class="row">
+        <div class="col-lg-6">
+<h2><?=$model->title?></h2>
 <div><?=$model->content?></div>
+
+
+            <?php if (Yii::$app->user->can('updatePost', ['post' => $model])) {
+                echo Html::a('Редактировать', ['/blog/post/update', 'id' => $model->id], ['class' => 'btn btn-primary']);
+            } ?>
+            <?php if (Yii::$app->user->can('deletePost', ['post' => $model])) {
+                echo Html::a('Удалить', ['/blog/post/delete', 'id' => $model->id], ['class' => 'btn btn-danger', 'data-method' => 'post'] );
+            } ?>
+             </div>
+        </div>
+    </div>
 <div id="hypercomments_widget"></div>
 <script type="text/javascript">
     _hcwp = window._hcwp || [];

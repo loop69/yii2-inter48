@@ -9,6 +9,13 @@ $config = [
             'enableAutoLogin' => true,
             'loginUrl' => ['user/default/login'],
         ],
+//        'authManager' => [
+//            'class' => 'yii\rbac\PhpManager',
+//            'defaultRoles' => ['admin', 'author'],
+//            'itemFile' => '@app/rbac/items.php',
+//            'ruleFile' => '@app/rbac/rules.php',
+//            'assignmentFile' => '@app/rbac/assignments.php',
+//        ],
         'errorHandler' => [
             'errorAction' => 'main/default/error',
         ],
@@ -18,6 +25,7 @@ $config = [
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
         ],
+
     ],
 ];
 
