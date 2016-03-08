@@ -49,7 +49,7 @@ AppAsset::register($this);
             !Yii::$app->user->isGuest ?
                 ['label' => Yii::t('app', 'NAV_BLOG'), 'items' => [
                     ['label' => Yii::t('app', 'NAV_BLOG'), 'url' => ['/blog/view/index']],
-                    ['label' => Yii::t('app', 'NAV_CREATE'), 'url' => ['/blog/post/create']],
+                    ['label' => Yii::t('app', 'NAV_CREATE'), 'url' => ['/blog/view/create']],
                 ]] :
                 false,
 

@@ -67,4 +67,9 @@ class Post extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
+
+    public function getUserName()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
 }

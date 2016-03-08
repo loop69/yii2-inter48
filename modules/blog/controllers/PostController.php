@@ -37,7 +37,7 @@ class PostController extends Controller
      */
     public function actionIndex()
     {
-      //  if (Yii::$app->user->can('admin')) {
+        if (Yii::$app->user->can('admin')) {
             $searchModel = new PostSearch();
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -46,11 +46,17 @@ class PostController extends Controller
                 'dataProvider' => $dataProvider,
             ]);
         }
-      //  else
-     //   {
-     //       echo 'запрет';
-      //  }
-   // }
+       else
+       {
+           $searchModel = new PostSearch();
+           $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+           return $this->render('index', [
+               'searchModel' => $searchModel,
+               'dataProvider' => $dataProvider,
+           ]);
+       }
+   }
 
     /**
      * Displays a single Post model.
@@ -102,6 +108,7 @@ class PostController extends Controller
                 return $this->render('update', [
                     'model' => $model,
                     'category' => Category::find()->all()
+
                 ]);
             }
        }else{echo 'ddd';}
@@ -140,7 +147,7 @@ class PostController extends Controller
         if (($model = Post::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
+            throw new NotFoundHttpException('Запрашиваемая страница не существует.');
         }
     }
 }

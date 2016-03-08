@@ -15,10 +15,10 @@ $this->params['breadcrumbs'][] = $model->title;
 
 
             <?php if (Yii::$app->user->can('updatePost', ['post' => $model])) {
-                echo Html::a('Редактировать', ['/blog/post/update', 'id' => $model->id], ['class' => 'btn btn-primary']);
+                echo Html::a('Редактировать', ['/blog/view/update', 'id' => $model->id], ['class' => 'btn btn-primary']);
             } ?>
             <?php if (Yii::$app->user->can('deletePost', ['post' => $model])) {
-                echo Html::a('Удалить', ['/blog/post/delete', 'id' => $model->id], ['class' => 'btn btn-danger', 'data-method' => 'post'] );
+                echo Html::a('Удалить', ['/blog/view/delete', 'id' => $model->id], ['class' => 'btn btn-danger', 'data-method' => 'post'] );
             } ?>
              </div>
         </div>

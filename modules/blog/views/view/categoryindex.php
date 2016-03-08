@@ -10,7 +10,8 @@ use app\modules\blog\models;
 /* @var $searchModel app\modules\blog\models\PostSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Посты');
+$this->title =  $category_title;
+$this->params['breadcrumbs'][] = ['label' => 'блог', 'url' => ['/blog/view']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="post-index">
@@ -22,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-lg-6">
                  <?php echo ListView::widget([
                     'dataProvider' => $listDataProvider,
-                    'itemView' => '_list', ]);
+                    'itemView' => '_listbycategory', ]);
                  ?>
             </div>
         </div>
