@@ -11,7 +11,7 @@ use app\modules\blog\models;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title =  $category_title;
-$this->params['breadcrumbs'][] = ['label' => 'блог', 'url' => ['/blog/view']];
+$this->params['breadcrumbs'][] = ['label' => 'События', 'url' => ['/blog/view']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="post-index">
@@ -20,11 +20,28 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="body-content">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-8">
                  <?php echo ListView::widget([
                     'dataProvider' => $listDataProvider,
                     'itemView' => '_listbycategory', ]);
                  ?>
+            </div>
+            <div class=" col-lg-1" >
+
+            </div>
+            <div class="col-lg-3 right-sidebar">
+                <?php if(Yii::$app->user->can('createPost')):?>
+                    <div>
+                        <p> <a href="<?=Url::to(['/blog/view/create'])?>"><?=Yii::t('app', 'NAV_CREATE')?></a></p>
+                    </div>
+                <?php endif;?>
+                <?php echo ListView::widget([
+                    'dataProvider' => $post_title,
+                    'layout' => "{summary}\n{items}\n",
+                    'summary' => '<a href="/blog/view" class="nav-header">ВСЕ СОБЫТИЯ</a>',
+                    'itemView' => '_listcategory', ]);
+                ?>
+
             </div>
         </div>
     </div>

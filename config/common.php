@@ -8,7 +8,7 @@ $params = ArrayHelper::merge(
 );
 
 return [
-    'name' => 'Заячья нора',
+    'name' => 'Ростовская специальная школа-интернат №48',
     'language'=>'ru-RU',
     'basePath' => dirname(__DIR__),
     'bootstrap' => [

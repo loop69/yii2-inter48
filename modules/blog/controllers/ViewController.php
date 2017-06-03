@@ -23,14 +23,28 @@ class ViewController extends Controller
      */
     public function actionIndex()		
 {
+//    $cat = new Category();
+//    $model = $cat->find()->select(['id','name'])->orderBy('id')->asArray()->all();
+
+//    foreach ($model as $item) {
+//       $post_title['id'] = $item->id;
+//        $post_title['name'] = $item->name;
+//   }
+
+
+
     $dataProvider = new ActiveDataProvider([
            'query' => Post::find()->where(['status'=>1])->with('category')->orderBy('created_at DESC'),
            'pagination' => [
                     'pageSize' => 10,
            ],
         ]);
+        $data = new ActiveDataProvider([
+            'query' => Category::find()->select(['id','name'])->orderBy('id ASC'),
+
+        ]);
        $this->view->title = 'News List';
-       return $this->render('index', ['listDataProvider' => $dataProvider]);
+       return $this->render('index', ['listDataProvider' => $dataProvider, 'post_title' => $data]);
 
 
 
@@ -56,7 +70,11 @@ class ViewController extends Controller
                 'pageSize' => 10,
             ],
         ]);
-        return $this->render('categoryindex', ['listDataProvider' => $dataProvider, 'category_title'=> $category_title]);
+        $data = new ActiveDataProvider([
+            'query' => Category::find()->select(['id','name'])->orderBy('id ASC'),
+
+        ]);
+        return $this->render('categoryindex', ['listDataProvider' => $dataProvider, 'post_title' => $data, 'category_title'=> $category_title]);
     }
 
 
@@ -64,12 +82,15 @@ class ViewController extends Controller
     {
         $post = new Post();
         $model = $post->findOne(['id'=>$id, 'status'=>1]);
+        $category = new Category();
+        $cat_title = $category->findOne($model->category_id);
+
 //        $searchModel = new PostSearch();
 //        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('show', [
             // 'searchModel' => $searchModel,
-            'model' => $model,
+            'model' => $model, 'cat_title'=>$cat_title,
         ]);
     }
 

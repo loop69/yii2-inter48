@@ -6,8 +6,9 @@ return [
     'NAV_LOGIN' => 'Вход',
     'NAV_PROFILE' => 'Профиль',
     'NAV_LOGOUT' => 'Выход',
-    'NAV_BLOG' => 'Блог',
-    'NAV_CREATE' => 'Создать запись в блоге',
+    'NAV_BLOG' => 'События',
+    'NAV_CREATE' => 'Создать супер событие',
+
 
 
     'TITLE_CONTACT' => 'Связь',

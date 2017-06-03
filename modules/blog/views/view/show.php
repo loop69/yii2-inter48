@@ -3,7 +3,13 @@
 use yii\helpers\Html;
 
 $this->title = Yii::t('app', 'Post');
-$this->params['breadcrumbs'][] = ['label' => 'блог', 'url' => ['/blog/view']];
+
+//$url_for_parse = $_SERVER['HTTP_REFERER'];
+//$url_parse = parse_url($url_for_parse, PHP_URL_PATH) . '?'. parse_url($url_for_parse, PHP_URL_QUERY);
+$cat_url = 'https://inter48.tech/blog/view/bycategory?category_id=' . $cat_title->id;
+
+$this->params['breadcrumbs'][] = ['label' => 'События', 'url' => ['/blog/view']];
+$this->params['breadcrumbs'][] = ['label' => $cat_title->name, 'url' => $cat_url];
 $this->params['breadcrumbs'][] = $model->title;
 ?>
 <div class="body-content">

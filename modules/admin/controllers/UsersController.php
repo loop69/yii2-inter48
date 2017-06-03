@@ -26,10 +26,10 @@ class UsersController extends Controller
                         'actions'=>['login','error'],
                         'roles' => ['?'],
                     ],
-//                    [
-//                        'allow' => true,
-//                        'roles' => ['admin'],
-//                    ],
+                    [
+                        'allow' => true,
+                        'roles' => ['admin'],
+                    ],
                 ],
             ],
             'verbs' => [
@@ -47,7 +47,7 @@ class UsersController extends Controller
      */
     public function actionIndex()
     {
-        if (\Yii::$app->user->can('deletePost')) {
+       // if (\Yii::$app->user->can('deletePost')) {
         $searchModel = new UserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
@@ -55,7 +55,7 @@ class UsersController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
-    }else{echo 'not admin';}
+  //  }else{echo 'not admin';}
     }
 
     /**

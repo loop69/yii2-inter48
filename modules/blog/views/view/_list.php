@@ -11,9 +11,7 @@ use app\modules\blog\models;
         <a href="<?=Url::to(['show', 'id'=> $model->id])?>"><?=$model->title?></a>
     </h2>
 </div>
+
 <div>
-    <a href="<?=Url::to(['bycategory', 'category_id' => $model->category_id])?>"><?=$model->category->name?></a>
-</div>
-<div>
-    <?= HtmlPurifier::process($model->content) ?>
+    <?= $model->content ?>
 </div>
