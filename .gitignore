@@ -13,7 +13,7 @@ nbproject
 Thumbs.db
 
 #upload dir
-upload
+upload/
 
 # composer vendor dir
 /vendor
