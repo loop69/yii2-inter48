@@ -12,6 +12,9 @@ nbproject
 # windows thumbnail cache
 Thumbs.db
 
+#upload dir
+upload
+
 # composer vendor dir
 /vendor
 
@@ -27,5 +30,4 @@ phpunit.phar
 /phpunit.xml
 /yii
 
-#upload dir
-/upload
+
