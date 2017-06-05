@@ -7,6 +7,7 @@ return [
     'NAV_PROFILE' => 'Профиль',
     'NAV_LOGOUT' => 'Выход',
     'NAV_BLOG' => 'События',
+    'NAV_PAGES' => 'Страницы',
     'NAV_CREATE' => 'Создать супер событие',
 
 

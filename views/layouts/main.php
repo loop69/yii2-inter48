@@ -20,7 +20,7 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
-   <link rel="canonical" href="https://inter48.tech<?php echo $_SERVER['REQUEST_URI']; ?>" />
+   <!--<link rel="canonical" href="https://inter48.tech<?php echo $_SERVER['REQUEST_URI']; ?>" /> -->
     <?php $this->head() ?>
 </head>
 <body>
@@ -46,6 +46,7 @@ AppAsset::register($this);
 
             ['label' => Yii::t('app', 'NAV_BLOG'), 'url' => ['/blog/view/index']],
 
+            ['label' => Yii::t('app', 'NAV_PAGES'), 'url' => ['/pages/view/index']],
 
             ['label' => Yii::t('app', 'NAW_CONTACT'), 'url' => ['/main/contact/index']],
 

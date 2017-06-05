@@ -16,7 +16,8 @@ return [
         'app\modules\admin\Bootstrap',
         'app\modules\main\Bootstrap',
         'app\modules\user\Bootstrap',
-		 'app\modules\blog\Bootstrap',
+		'app\modules\blog\Bootstrap',
+        'app\modules\pages\Bootstrap',
     ],
     'modules' => [
         'admin' => [
@@ -30,6 +31,9 @@ return [
         ],
         'blog' => [
             'class' => 'app\modules\blog\Module',
+        ],
+        'pages' => [
+            'class' => 'app\modules\pages\Module',
         ],
     ],
     'components' => [
